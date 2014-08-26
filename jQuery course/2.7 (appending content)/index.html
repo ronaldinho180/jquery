@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Appending Content</title>
+	<style>
+	article{
+		width: 600px;
+		margin: auto;
+	}
+	blockquote.co{
+		float: right;
+		background: #e3e3e3;
+		font-size: 2em;
+		width: 35%;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+
+	<article>
+		<h1>My Awesome Post</h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium placeat inventore, nemo fugiat magni cum ad, reiciendis assumenda provident, expedita, nihil. Quidem accusamus illo quod consequuntur amet ut at quasi!
+		</p>
+		<p>
+			<span class="co">Lorem ipsum dolor sit amet</span>, consectetur adipisicing elit. Possimus dolorum, consectetur hic aliquid deserunt animi amet cupiditate consequuntur veniam tenetur iusto vel ipsam voluptate doloremque quisquam, ex blanditiis expedita laborum.
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium placeat inventore, nemo fugiat magni cum ad, reiciendis assumenda provident, expedita, nihil. Quidem accusamus illo quod consequuntur amet ut at quasi!
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium placeat inventore, nemo fugiat magni cum ad, reiciendis assumenda provident, expedita, nihil. Quidem accusamus illo quod consequuntur amet ut at quasi!
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium placeat inventore, nemo fugiat magni cum ad, reiciendis assumenda provident, expedita, nihil. Quidem accusamus illo quod consequuntur amet ut at quasi!
+		</p>
+	</article>
+	
+
+	<script src="../jquery-1.11.1.js"></script>
+	<script>
+
+	(function(){
+
+		var co = $('article').find('span.co').each(function(){
+			var $this = $(this);
+
+			$('<blockquote></blockquote>',{
+				text: $this.text(),
+				class: 'co'
+			}).prependTo( $this.closest('p') );
+
+		});
+
+
+	})();
+
+	</script>
+
+	
+</body>
+</html>

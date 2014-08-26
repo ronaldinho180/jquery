@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JQuery Events 201</title>
+	<link rel="stylesheet" href="style.css"/>
+	
+	<style>
+	</style>
+
+</head>
+<body>
+
+<dl>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7</dd>
+
+</dl>
+
+
+<script src="../../jquery-1.11.1.js"></script>
+<script>
+
+(function(){
+
+	$('dd').filter(':nth-child(n+4)').addClass('hide');
+
+	$('dl').on('mouseenter', 'dt', function() {
+		/* Act on the event */
+		$(this).next().slideDown().siblings('dd').slideUp(500);
+
+	});
+})();
+	
+</script>
+
+	
+</body>
+</html>

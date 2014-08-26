@@ -1,0 +1,4 @@
+Basically this tut was just an information on why we shouldnt use Bind, Live and Delegate.
+Instead you should just use the .on() event instead.
+
+ps. the live event has been removed from jquery as a whole.
