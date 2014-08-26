@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Slides and Structures</title>
+</head>
+<style>
+
+	body{
+		width: 600px;
+		margin: auto;
+		font-family: sans-serif;
+	}
+
+	#contact{
+		background: #e3e3e3;
+		padding: 1em 2em;
+		position: relative;
+	}
+
+	.js #contact{
+		position: absolute;
+		top: 0;
+		width: inherit;
+		display: none;
+	}
+
+	#contact h2{
+		margin-top: 0;
+	}
+	
+	#contact ul{
+		padding: 0;
+	}
+	#contact li{
+		list-style: none;
+		margin-bottom: 1em;
+	}
+
+	.close{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		font-weight: bold;
+		font-family: sans-serif;
+		cursor: pointer;
+	}
+
+	input, textarea{
+		width: 100%;
+		line-height: 2em;
+	}
+
+	input[type=submit]{
+		width: auto;
+	}
+
+	label{
+		display: block;
+		text-align: left;
+	}
+	
+</style>
+<body>
+
+	<article>
+		<h2>Article Title</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex esse magni commodi nesciunt expedita voluptatibus fuga voluptas vel sit, ullam aspernatur ipsam aut ipsa. Omnis officiis, laboriosam voluptatum excepturi.
+			</p>
+			<p> 
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi magnam explicabo nobis animi eligendi unde, consequatur repellendus illum quas, odit optio ab corrupti et alias! In maiores molestias repellat quibusdam!
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere aspernatur, tenetur modi voluptate placeat earum, exercitationem suscipit, facilis optio veniam provident ut ab iste laborum expedita officia aut deserunt perspiciatis?
+			</p>
+	</article>
+
+	<div id="contact">
+		<h2>Contact Me</h2>
+		<form  action="#">
+			<ul>
+				<li>
+					<lable for="name">Name: </lable>
+					<input name="name" id="name" type="text">
+				</li>
+				<li>
+					<lable for="email">Email: </lable>
+					<input name="email" id="email" type="text">
+				</li>
+				<li>
+					<lable for="comments">What's Up?</lable>
+					<textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+				</li>
+				<li>
+					<input type="submit" value="Submit">
+				</li>
+			</ul>
+		</form>
+	</div>
+	
+	<script src="../jquery-1.11.1.js"></script>
+	<script>
+
+	(function(){
+		$('html').addClass('js')
+
+		var contactForm = {
+			container: $('#contact'),
+
+			config: {
+				effect: 'slideToggle'
+			},
+
+			init: function(config){
+				$.extend(this.config, config);
+				
+				$('<button></button>', {
+					text: 'Contact Me'
+				}).insertAfter('article').on('click', this.show);
+
+			},
+
+			show: function(){
+				var cf = contactForm,
+					container = cf.container,
+					config = cf.config
+
+				if(container.is(':hidden')){
+					contactForm.close.call(container);
+					container[config.effect](config.speed);
+				}
+			},
+
+			close: function(){
+				var $this = $(this);
+
+				if($this.find('span.close').length) return;
+
+				$('<span class=close>X</span>').prependTo(this).on('click', function(){
+					$this[contactForm.config.effect](contactForm.config.speed);
+				})
+			}
+		};
+
+		contactForm.init({
+			effect: 'fadeToggle',
+			speed: 400
+		});
+
+	})();
+
+
+	</script>
+
+</body>
+</html>
