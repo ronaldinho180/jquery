@@ -1,0 +1,8 @@
+Homework
+
+I want you to create your own fadeSlideToggle() method that will combine the functionality of slideToggle and fadeToggle. You may not reference either of these methods directly, instead you'll user animate().
+
+hint: jQuery allows you to pass the string "toggle", as a value for height and opacity.
+
+when finished, the method should be called, like so: 
+$('#box').fadeSlideToggle();

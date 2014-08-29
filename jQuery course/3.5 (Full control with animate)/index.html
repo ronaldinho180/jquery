@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Full control with animate</title>
+</head>
+<style>
+	.box{
+		width: 400px;
+		background: red;
+		padding: 2em;
+		position: relative;
+	}
+</style>
+<body>
+
+<div class="box">
+	<h2>Some content here</h2>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe consequuntur consectetur maiores mollitia illum odio quibusdam ullam minus quod, facilis quia, dolorum quas pariatur labore laboriosam atque accusamus incidunt necessitatibus?
+	</p>
+</div>
+<p><button>increase</button></p>
+
+<script src="../jquery-1.11.1.js"></script>
+<script>
+	(function(){
+		var box = $('div.box'),
+			winWidth = $(window).width() / 2 - box.outerWidth() / 2,
+			winHeight = $(window).height() / 2 - box.outerHeight() / 2;
+			//fontSize = parseInt( box.css('font-size'), 10);
+
+		$('button').on('click', function(){
+			// box.animate({
+			// 	fontSize: '+=5', /*fontSize += 5*/
+			// 	width: '+=300'
+			// }, 500, 'swing', function(){
+			// 	console.log('Somebody help me!!!');
+			// });
+
+			// box.animate({
+			// 	fontSize: '+=5',
+			// }, {
+			// 	duration: 500,
+			// 	complete: function(){
+			// 		console.log('complete');
+			// 	},
+			// 	step: function(){
+			// 		console.log('The current font-size is: ' + $(this).css('font-size'));
+			// 	 }
+			// });
+
+			// box.animate({
+			// 	fontSize: '+=5'
+			// }, { duration: 500 }).
+			// animate({ 'top': 500 }, { duration: 3000, queue: false});
+
+			box.animate({
+				left: winWidth,
+				position: 'absolute'
+			}).animate({
+				top: winHeight
+			});
+				
+				
+		});
+	})();
+	
+</script>
+	
+</body>
+</html>

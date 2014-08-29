@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Solution</title>
+</head>
+<style>
+	.box{
+		width: 400px;
+		background: red;
+		padding: 2em;
+		position: relative;
+	}
+</style>
+<body>
+
+<div class="box">
+	<h2>Some content here</h2>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe consequuntur consectetur maiores mollitia illum odio quibusdam ullam minus quod, facilis quia, dolorum quas pariatur labore laboriosam atque accusamus incidunt necessitatibus?
+	</p>
+</div>
+<p><button>increase</button></p>
+
+<script src="../jquery-1.11.1.js"></script>
+<script>
+	
+
+	(function(){
+
+		var box = $('div.box');
+		
+		$.fn.fadeSlideToggle = function(speed, fn){
+
+			var $this = $(this);
+			
+			return $('button').on('click', function(){
+				$this.animate({
+					height: 'toggle',
+					opacity: 'toggle'
+				}, speed || 1000, function(){
+					$.isFunction(fn) && fn.call(this);
+				});
+			});
+		}
+
+		box.fadeSlideToggle(500, function(){
+			console.log('Sup!?');
+		});
+
+	})();
+	
+</script>
+	
+</body>
+</html>

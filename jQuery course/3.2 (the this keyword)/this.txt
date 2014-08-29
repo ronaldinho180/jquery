@@ -1,0 +1,1 @@
+This lesson was just going over the this keyword.
