@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$.each</title>
+</head>
+<body>
+	<script id=blogTemplate type=tuts/template>
+		<h2> {{title}} </h2>
+		<img src={{thumbnail}} alt={{title}}>
+	</script>
+
+	<script src="../jquery-1.11.1.js"></script>
+	<script>
+		(function(){
+			var content = [
+				{
+					title: 'my awesome blog post',
+					thumbnail: 'http://www.google.com',
+				},
+				{
+					title: 'my awesome second blog post',
+					thumbnail: 'http://www.nba.com',
+				},
+				{
+					title: 'my awesome third blog post',
+					thumbnail: 'http://www.yahoo.com',
+				}
+			];
+
+			var template = $.trim($('#blogTemplate').html());
+
+			var frag = '';
+			
+			$.each(content, function(index, obj){
+				frag += template.replace(/{{title}}/ig, obj.title).replace(/{{thumbnail}}/ig, obj.thumbnail);
+			});
+
+			$('body').append(frag);
+		})();
+
+	</script>
+</body>
+</html>
