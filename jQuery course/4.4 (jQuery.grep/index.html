@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$.grep</title>
+</head>
+<body>
+
+
+	<script src="../jquery-1.11.1.js"></script>
+	<script>
+		(function(){
+
+			var arr = [
+				{
+					first: 'Hasanain',
+					last: 'Alsafi'
+				},
+				{
+					first: 'Ali',
+					last: 'Alsafi'
+				},
+				{
+					first: 'Kobe',
+					last: 'Bryant'
+				},
+				{
+					first: 'Lebron',
+					last: 'James'
+				},
+				{
+					first: 'Zahra',
+					last: 'Alsafi'
+				}
+			];
+
+			arr = $.grep(arr, function(obj, index){
+				return obj.last == 'Alsafi';
+			});
+
+			console.log(arr);
+
+
+			// var arr = [1,2,3,4,5,6,7,8,9,10];
+
+			// arr = $.grep(arr, function(val, index){
+			// 	// only return number that are greater than 5
+			// 	return val>5;
+			// });
+			// console.log(arr);
+		})();
+	</script>
+	
+</body>
+</html>

@@ -12,9 +12,19 @@
 		(function(){
 			var Twitter = {
 				init: function(){
-					this.url = 'search.twitter.com/search/json?q=nba'
+					this.url = 'https://api.twitter.com/1.1/search/tweets.json?q=nba&callback=?';
+					this.fetch();
+				},
+
+				fetch: function(){
+					$.getJSON( this.url, function(data){
+						console.log(data);
+
+					});
 				}
-			}
+			};
+
+			Twitter.init();
 		})();
 	</script>
 	
