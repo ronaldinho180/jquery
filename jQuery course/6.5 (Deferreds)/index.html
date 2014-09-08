@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Deferreds</title>
+
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;
+			background: green;
+			display: inline-block;
+			margin-right: 3em;
+		}
+	</style>
+
+</head>
+<body>
+
+<div class="box">my box</div>
+<div class="box">my box</div>
+<div class="box">my box</div>
+
+<script src="jquery-1.7.1.js"></script>
+<script>
+
+function getTweets( search ){
+	return $.ajax({
+		url: 'http://search.twitter.com/search.json',
+		data: {q: search},
+		dataType: 'jsonp'
+	});
+}
+
+//$.when is used to stack multiple ajax operations
+$.when( getTweets( 'dogs' ), getTweets( 'cats' )).done(function(results1 ,results2){
+	console.log(results1);
+	console.log(results2);
+});
+
+
+
+/*$('div.box').each(function(i){
+	$(this).delay(1000 * i++).fadeOut(1000);
+}).promise().done(function(){ //a promise to let you know when they (the animations) have completed and then run this function
+	console.log('done');
+});*/
+
+
+
+/*$.searchTwitter = function(search){
+	return $.ajax({
+		url: 'http://search/twitter.com/search.json',
+		data: {q: search},
+		dataType: 'jsonp'
+	}).promise();
+};
+
+var outer = $.searchTwitter('cats');
+
+outer.then(
+	function(results){
+		console.log(results);
+	},
+	function(){
+		console.log('failed');
+	}
+);*/
+
+
+
+	/*var myVar;
+
+	var setVal = function(){
+		var deferred = $.Deferred();
+
+		setTimeout(function(){
+			myVar = 'my value';
+
+			//if the call has failed
+			//deferred.reject(); 
+
+			//if the call is successful
+			deferred.resolve(); 
+
+		}, 2000);
+
+		return deferred.promise();
+	};
+
+	//if successful
+	setVal().then(
+		function(){
+			console.log('all done ' + myVar);
+		},
+		function(){
+			console.log('failed');
+		}
+	);*/
+
+	//if fails run this
+	// setVal().fail(function(){
+	// 	console.log('all done (failed) ' + myVar);
+	// });
+
+	//Run regardless if it has failed or successful
+	// setVal().always(function(){
+	// 	console.log('all done (failed) ' + myVar);
+	// });
+
+</script>
+	
+</body>
+</html>
