@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Plugin</title>
+</head>
+<body>
+	<h1>My Tweets</h1>
+	<div class="tweets"></div>
+
+	<script src="jquery-1.11.1.js"></script>
+	<script src="searchTwitter.jquery.js"></script>
+	<script>
+		$('div.tweets').queryTwitter({
+			search: 'dogs',
+			limit: 5,
+			onComplete: function(){
+				console.log(arguments);
+			},
+			refresh: 1000,
+			transition: 'slideToggle'
+		});
+
+		var instance = ($.data($('div.tweets')[0], 'queryTwitter'));
+		instance.url = 'http://newurl.com';
+	</script>
+</body>
+</html>
